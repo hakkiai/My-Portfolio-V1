@@ -3,9 +3,14 @@ import "./Contact.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import emailjs from "@emailjs/browser";
-import keys from "../../utils/keys_emailjs";
 import { useTranslation } from "react-i18next";
 import { Notify } from "notiflix";
+
+// const keys = {
+//   service_id: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+//   template_id: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+//   public_key: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+// };
 
 const Contact = () => {
   const form = useRef<HTMLFormElement | null>(null);
@@ -19,23 +24,23 @@ const Contact = () => {
     e.preventDefault();
 
     if (!form.current) return;
-    emailjs
-      .sendForm(
-        keys.service_id,
-        keys.template_id,
-        form.current,
-        keys.public_key
-      )
-      .then(() => {
-        Notify.success(t("submitSuccess"), {
-          timeout: 3000,
-        });
-      })
-      .catch((error) => {
-        Notify.failure(t("submitFailure"), { timeout: 3000 });
-        console.log(error);
-      });
-    form.current.reset();
+    // emailjs
+    //   .sendForm(
+    //     keys.service_id,
+    //     keys.template_id,
+    //     form.current,
+    //     keys.public_key
+    //   )
+    //   .then(() => {
+    //     Notify.success(t("submitSuccess"), {
+    //       timeout: 3000,
+    //     });
+    //   })
+    //   .catch((error) => {
+    //     Notify.failure(t("submitFailure"), { timeout: 3000 });
+    //     console.log(error);
+    //   });
+    // form.current.reset();
   };
 
   return (
